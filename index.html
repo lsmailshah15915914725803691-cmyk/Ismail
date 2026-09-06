@@ -1,211 +1,1667 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ismailapk - App Download</title>
+<meta charset="UTF-8">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="IsmailAPK - Discover apps and games">
+
+<title>IsmailAPK - Apps & Games</title>
+
+
+<style>
+    
+    .app-icon{
+    width:75px;
+    height:75px;
+    flex-shrink:0;
+    border-radius:17px;
+    overflow:hidden;
+}
+
+.app-icon img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    border-radius:inherit;
+}
+
+.extra-apps{
+    display:none;
+}
+
+.extra-apps.show{
+    display:grid;
+}
+    
+   .extra-games{
+    display:none;
+}
+
+.extra-games.show{
+    display:grid;
+} 
+    
+     /* आपका बाकी CSS यहाँ रहेगा */
+
+
+
+/* =========================
+   BASIC
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f6f8;
+    color:#20232a;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    height:70px;
+    background:#4054b2;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    position:sticky;
+    top:0;
+
+    z-index:1000;
+
+    box-shadow:0 2px 12px #0002;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#dce2ff;
+}
+
+nav{
+    display:flex;
+    gap:28px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#dce2ff;
+}
+
+.menu{
+    display:none;
+
+    font-size:27px;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   HERO / HOME
+========================= */
+
+.hero{
+    background:
+    linear-gradient(
+        135deg,
+        #4054b2,
+        #596ed0
+    );
+
+    color:white;
+
+    text-align:center;
+
+    padding:75px 20px;
+}
+
+.hero h1{
+    font-size:48px;
+
+    line-height:1.15;
+
+    margin-bottom:15px;
+}
+
+.hero h1 span{
+    color:#dce2ff;
+}
+
+.hero p{
+    max-width:650px;
+
+    margin:auto;
+
+    color:#e9ecff;
+
+    font-size:16px;
+
+    line-height:1.7;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search{
+    max-width:650px;
+
+    height:54px;
+
+    margin:28px auto 0;
+
+    display:flex;
+
+    background:white;
+
+    border-radius:9px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 25px #0003;
+}
+
+.search input{
+    flex:1;
+
+    min-width:0;
+
+    border:0;
+
+    outline:0;
+
+    padding:0 16px;
+
+    font-size:15px;
+}
+
+.search button{
+    border:0;
+
+    background:#293d96;
+
+    color:white;
+
+    padding:0 25px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.search button:hover{
+    background:#1f307c;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:92%;
+
+    max-width:1150px;
+
+    margin:auto;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    margin:40px 0;
+}
+
+.section-title{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:20px;
+}
+
+.section-title h2{
+    font-size:25px;
+}
+
+.view-more{
+    background:#4054b2;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:10px 16px;
+
+    border-radius:7px;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+
+/* =========================
+   APP LIST
+========================= */
+
+.app-list{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:18px;
+}
+
+
+/* =========================
+   APP CARD
+========================= */
+
+.app-card{
+    background:white;
+
+    border:1px solid #e4e6eb;
+
+    border-radius:13px;
+
+    padding:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    box-shadow:0 2px 8px #00000008;
+
+    transition:.2s;
+
+    cursor:pointer;
+}
+
+.app-card:hover{
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 25px #0002;
+
+    border-color:#4054b2;
+}
+
+.app-icon{
+    width:75px;
+
+    height:75px;
+
+    flex-shrink:0;
+
+    border-radius:17px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #4054b2,
+        #7b8de0
+    );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:32px;
+
+    color:white;
+}
+
+.app-info{
+    flex:1;
+}
+
+.app-info h3{
+    font-size:18px;
+
+    margin-bottom:6px;
+}
+
+.app-info p{
+    color:#70757d;
+
+    font-size:13px;
+
+    line-height:1.5;
+}
+
+.app-version{
+    margin-top:5px;
+
+    color:#92969d !important;
+
+    font-size:12px !important;
+}
+
+
+/* =========================
+   INFORMATION TAB
+========================= */
+
+.info-modal{
+    position:fixed;
+
+    inset:0;
+
+    background:#0008;
+
+    z-index:2000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:15px;
+}
+
+.info-modal.show{
+    display:flex;
+}
+
+.info-box{
+    width:100%;
+
+    max-width:600px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:white;
+
+    border-radius:16px;
+
+    padding:22px;
+
+    position:relative;
+
+    box-shadow:0 20px 60px #0005;
+}
+
+.info-close{
+    position:absolute;
+
+    top:12px;
+
+    right:12px;
+
+    width:38px;
+
+    height:38px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#eeeeee;
+
+    color:#333;
+
+    font-size:25px;
+
+    cursor:pointer;
+}
+
+.info-close:hover{
+    background:#ddd;
+}
+
+.info-icon{
+    width:75px;
+
+    height:75px;
+
+    margin:5px auto 12px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #4054b2,
+        #7789e0
+    );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:32px;
+}
+
+.info-box h2{
+    text-align:center;
+
+    margin-bottom:5px;
+}
+
+.info-subtitle{
+    text-align:center;
+
+    color:#777;
+
+    font-size:13px;
+
+    margin-bottom:20px;
+}
+
+.info-row{
+    display:grid;
+
+    grid-template-columns:42% 58%;
+
+    padding:14px 5px;
+
+    border-bottom:1px solid #eee;
+
+    font-size:14px;
+}
+
+.info-row span{
+    color:#555;
+}
+
+.info-green{
+    color:#16a34a !important;
+
+    font-weight:bold;
+}
+
+.info-download{
+    display:block;
+
+    margin-top:20px;
+
+    padding:15px;
+
+    background:#4054b2;
+
+    color:white;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    border-radius:8px;
+
+    font-weight:bold;
+}
+
+.info-download:hover{
+    background:#3346a0;
+}
+
+
+/* =========================
+   NEWS
+========================= */
+
+.news{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:18px;
+}
+
+.news-card{
+    background:white;
+
+    border:1px solid #e4e6eb;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    box-shadow:0 2px 8px #00000008;
+}
+
+.news-card h3{
+    margin-bottom:8px;
+}
+
+.news-card p{
+    color:#70757d;
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    margin-top:60px;
+
+    background:#202c68;
+
+    color:white;
+
+    text-align:center;
+
+    padding:40px 20px;
+}
+
+footer .logo{
+    margin-bottom:10px;
+}
+
+footer p{
+    color:#d7dcf5;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    header{
+        height:65px;
+
+        padding:0 5%;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f4f7;
-      color: #222;
+    nav{
+        display:none;
+
+        position:absolute;
+
+        top:65px;
+
+        left:0;
+
+        right:0;
+
+        background:#3346a0;
+
+        flex-direction:column;
+
+        padding:20px;
+
+        gap:18px;
     }
 
-    header {
-      background: #111827;
-      color: white;
-      padding: 18px;
-      text-align: center;
+    nav.show{
+        display:flex;
     }
 
-    header h1 {
-      font-size: 24px;
+    .menu{
+        display:block;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 25px auto;
-      padding: 15px;
+    .hero{
+        padding:55px 18px;
     }
 
-    .app-card {
-      background: white;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    .hero h1{
+        font-size:36px;
     }
 
-    .app-top {
-      display: flex;
-      gap: 20px;
-      align-items: center;
+    .hero p{
+        font-size:14px;
     }
 
-    .app-icon {
-      width: 110px;
-      height: 110px;
-      border-radius: 22px;
-      object-fit: cover;
-      background: #ddd;
+    .search{
+        height:50px;
     }
 
-    .app-info h2 {
-      font-size: 25px;
-      margin-bottom: 8px;
+    .search button{
+        padding:0 15px;
     }
 
-    .rating {
-      color: #f59e0b;
-      margin-bottom: 8px;
+    .container{
+        width:94%;
     }
 
-    .meta {
-      color: #666;
-      font-size: 14px;
-      line-height: 1.7;
+    .section-title h2{
+        font-size:21px;
     }
 
-    .download-btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background: #16a34a;
-      color: white;
-      text-decoration: none;
-      padding: 15px;
-      margin-top: 22px;
-      border-radius: 10px;
-      font-size: 18px;
-      font-weight: bold;
+    .app-card{
+        padding:13px;
     }
 
-    .download-btn:hover {
-      background: #15803d;
+    .app-icon{
+        width:65px;
+
+        height:65px;
+
+        font-size:27px;
     }
 
-    .section {
-      margin-top: 25px;
+    .app-info h3{
+        font-size:16px;
     }
 
-    .section h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
+    .info-box{
+        padding:17px;
     }
 
-    .section p {
-      line-height: 1.7;
-      color: #555;
+    .info-row{
+        grid-template-columns:43% 57%;
+
+        font-size:13px;
     }
 
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #777;
-      font-size: 14px;
+}
+
+
+/* =========================
+   VERY SMALL MOBILE
+========================= */
+
+@media(max-width:400px){
+
+    .hero h1{
+        font-size:32px;
     }
 
-    @media (max-width: 600px) {
-      .app-top {
-        align-items: flex-start;
-      }
-
-      .app-icon {
-        width: 85px;
-        height: 85px;
-      }
-
-      .app-info h2 {
-        font-size: 20px;
-      }
+    .app-card{
+        gap:10px;
     }
-  </style>
+
+    .app-icon{
+        width:58px;
+
+        height:58px;
+
+        font-size:24px;
+    }
+
+}
+
+</style>
+
 </head>
-
 <body>
 
-  <header>
-    <h1>ismailapk</h1>
-  </header>
+<!-- ================= HEADER ================= -->
 
-  <div class="container">
+<header>
 
-    <div class="app-card">
+    <div class="logo">
+        Ismail<span>APK</span>
+    </div>
 
-      <div class="app-top">
+    <nav id="nav">
+        <a href="#home">HOME</a>
+        <a href="#apps">APPS</a>
+        <a href="#games">GAMES</a>
+        <a href="#news">NEWS</a>
+    </nav>
 
-        <!-- APP IMAGE -->
-        <img
-          class="app-icon"
-          src="icon.png"
-          alt="App Icon">
+    <div class="menu" onclick="toggleMenu()">
+        ☰
+    </div>
 
-        <div class="app-info">
-          <h2>minecraft</h2>
+</header>
 
-          <div class="rating">
-            ★★★★★ 4.8/5
-          </div>
 
-          <div class="meta">
-            Version: 1.21.60.28<br>
-            Size: 757.78 MB<br>
-            Android: 15+
-          </div>
-        </div>
+<!-- ================= HOME ================= -->
 
-      </div>
+<section class="hero" id="home">
 
-      <!-- DOWNLOAD BUTTON -->
-      <!-- Yahan apni authorized/legal download file ka link lagaye -->
-      <a
-        class="download-btn"
-        href="https://files.leeapk.com/aHR0cHM6Ly93d3cubWVkaWFmaXJlLmNvbS9maWxlL3BzcmsydHlwb3Npam9xZi9taW5lY3JhZnQtbW9kX3YxLjIxLjYwLjI4XyUyNTI4OTcyMTA2MDI4JTI1MjkuYXBrL2ZpbGV8N2c5SCQycEwhelI5MnZfbU41eFEtOGpLd3czOTFBelBxXzAyOQ"
-        download>
-        ⬇ Download APK
-      </a>
+    <h1>
+        Discover <span>Apps & Games</span>
+    </h1>
 
-      <div class="section">
-        <h3>About This App</h3>
+    <p>
+        Explore the latest apps, games and updates
+        on IsmailAPK.
+    </p>
 
-        <p>
-          Minecraft is an open-world sandbox adventure game where you can explore, build, craft, and create your own unique world.
-          In Survival Mode, gather resources, craft tools, explore different environments, and try to survive. In Creative Mode, you can build freely with access to a wide variety of blocks and resources.
-          You can also explore different biomes, discover new places, create amazing structures, and enjoy adventures with friends through supported multiplayer features.
-          Features:
-          - 🏗️ Build and create
-          - 🌍 Explore a huge world
-          - ⛏️ Mine and craft resources
-          - 🎮 Creative & Survival modes
-          - 👥 Multiplayer gameplay
-          - 🧱 Customize your world with supported content
-        </p>
-      </div>
+    <div class="search">
 
-      <div class="section">
-        <h3>What's New</h3>
+        <input
+            id="search"
+            type="search"
+            placeholder="Search apps or games..."
+            oninput="searchItems()">
 
-        <p>
-          • New improvements<br>
-          • Bug fixes<br>
-          • Better performance
-        </p>
-      </div>
+        <button onclick="searchItems()">
+            SEARCH
+        </button>
 
     </div>
 
-  </div>
+</section>
 
-  <footer>
-    © 2026 My APK Hub. All rights reserved.
-  </footer>
+
+<main class="container">
+
+
+<!-- ================= APPS ================= -->
+
+<section class="section" id="apps">
+
+    <div class="section-title">
+
+        <h2>
+            Recommended Apps
+        </h2>
+
+        <button
+    class="view-more"
+    onclick="showMoreApps()">
+    VIEW MORE
+         </button>
+        
+
+    </div>
+
+
+    <div class="app-list" id="appList">
+
+
+        <!-- APP 1 -->
+
+        <article
+            class="app-card"
+            data-name="YouTube Por Premium"
+            onclick="showInfo(
+                'YouTube Por Premium',
+                'Google LLC',
+                '21.35.442',
+                'Android 15+',
+                'Video Players & Editors',
+                '175 MB',
+                'September 5, 2026',
+                'Prmium Unlocked',
+                'https://go.onehost.io/UauSmoIliA6F'
+            )">
+
+            <div class="app-icon">
+    <img src="images.jpeg" alt="YouTube Por Premium">
+</div>
+
+            <div class="app-info">
+
+                <h3>
+                    YouTube Por Premium
+                </h3>
+
+                <p>
+                    YouTube Premium offers an ad-free viewing experience, background playback, and access to YouTube Music Premium. Enjoy your favorite videos and music with extra features.
+                </p>
+
+                <p class="app-version">
+                    Version 21.35.442 • 175 MB
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- APP 2 -->
+
+        <article
+            class="app-card"
+            data-name="Pix Editor"
+            onclick="showInfo(
+                'Pix Editor',
+                'Signature EXP',
+                '1.4.44',
+                'Android 15+',
+                'photography',
+                '57 MB',
+                'September 5, 2026',
+                'Premium Unlocked',
+                'https://cloud.leeapks.com/Pix_Editor_v1.4.44_(48)_Mod.apk?token=1788625419.NQdrMCQiMLhLqEyrBFavXnRY7-R7mSnn1rap_T8FphY'
+            )">
+
+            <div class="app-icon">
+    <img src="images.(1)jpeg" alt="Pix Editor">
+</div>
+
+            <div class="app-info">
+
+                <h3>
+                    Pix Editor
+                </h3>
+
+                <p>
+                    photography Ai
+                </p>
+
+                <p class="app-version">
+                    Version 1.4.44 • 57 MB
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- APP 3 -->
+
+        <article
+            class="app-card"
+            data-name="YouCut-Video Editor"
+            onclick="showInfo(
+                'YouCut-Video Editor',
+                '1.720.1223',
+                '4.1',
+                'Android 15+',
+                'Video Players & Editors',
+                '52 MB',
+                'September 5, 2026',
+                'Por Unlocked',
+                'https://cloud.leeapks.com/YouCut_-_Video_Editor_v1.720.1223_(1223)_Mod.apk?token=1788625999.WmMbpYt_JyC0FlRKwvTNciAi4luFoVTzRf1rZNKhUfA'
+            )">
+
+            <div class="app-icon">
+    <img src="youcut-logo.webp" alt="YouCut-Video Editor">
+</div>
+
+            <div class="app-info">
+
+                <h3>
+                    YouCut-Video Editor
+                </h3>
+
+                <p>
+                    YouCut is a powerful and easy-to-use video editor for creating, trimming, merging, and enhancing videos with music, filters, effects, and more.
+                </p>
+
+                <p class="app-version">
+                    Version 1.720.1223 • 52 MB
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+                  <!-- APP 4 -->
+
+           <article
+            class="app-card"
+            data-name="Duolingo"
+            onclick="showInfo(
+                'Duolingo',
+                'Duolingo',
+                '6.95.4',
+                'Android 15+',
+                'Education',
+                '135 MB',
+                'September 2, 2026',
+                'MAX Unlocked',
+                'https://cloud.leeapks.com/Duolingo_v6.95.4_(2451)_Mod.apk?token=1788664175.jHLDHLo9bguHm4X0e0C3YLpRtESqq9OrcdVxssTI6Ns'
+            )">
+
+            <div class="app-icon">
+    <img src="Duolingo-Mod-APK.webp" alt="Duolingo">
+</div>
+
+            <div class="app-info">
+
+                <h3>
+                    Duolingo
+                </h3>
+
+                <p>
+                    Duolingo is a fun language-learning app that helps you learn new languages through short, interactive lessons, exercises, and daily challenges.
+                </p>
+
+                <p class="app-version">
+                    Version 6.95.4 • 135 MB
+                </p>
+
+            </div>
+
+        </article>
+    
+    
+      <div class="extra-apps">
+
+             <!-- APP 5 -->
+
+    <article
+        class="app-card"
+        data-name="FreeReels"
+        onclick="showInfo(
+            'FreeReels',
+            'SKYWORK AI PTE.LTD',
+            '2.4.60',
+            'Android 6.0+',
+            'Entertainment',
+            '90 MB',
+            'September 5, 2026',
+            'Premium Unlocked',
+            'https://cloud.leeapks.com/FreeReels_v2.4.60_(200460001)_Mod.apk?token=1788667456.neFMvzwLIvbsLSD2kcGkhxBhc6mdaQe37kbJz9Owb4U'
+        )">
+
+        <div class="app-icon">
+            <img src="FreeReels-App-Logo.webp" alt="FreeReels">
+        </div>
+
+        <div class="app-info">
+
+            <h3> FreeReels </h3>
+
+            <p>
+                FreeReels is a fun video app for discovering and watching short, entertaining videos. Explore trending content and enjoy quick videos anytime.
+            </p>
+
+            <p class="app-version">
+                Version 2.4.60 • 90 MB
+            </p>
+
+        </div>
+
+    </article>
+
+</div>
+
+    <!-- ================= GAMES ================= -->
+
+<section class="section" id="games">
+
+    <div class="section-title">
+
+        <h2>
+            Popular Games
+        </h2>
+
+         <button
+    class="view-more"
+    onclick="showMoreGames()">
+    VIEW MORE
+          </button>
+
+    </div>
+
+
+    <div class="app-list">
+
+
+        <!-- GAME 1 -->
+
+        <article
+            class="app-card"
+            data-name="minecraft"
+            onclick="showInfo(
+                'MINECRAFT',
+                'IsmailAPK',
+                '1.21.60.28',
+                'Android 15+',
+                'Arcade',
+                '722.68 MB',
+                'Jan 24, 2025',
+                'lmmortality Unlocked',
+                'https://files.leeapk.com/aHR0cHM6Ly93d3cubWVkaWFmaXJlLmNvbS9maWxlL3BzcmsydHlwb3Npam9xZi9taW5lY3JhZnQtbW9kX3YxLjIxLjYwLjI4XyUyNTI4OTcyMTA2MDI4JTI1MjkuYXBrL2ZpbGV8N2c5SCQycEwhelI5MnZfbU41eFEtOGpLd3czOTFBelBxXzAyOQ'
+            )">
+
+            <div class="app-icon">
+    <img src="icon.png" alt="Minecraft">
+</div>
+
+<div class="app-info">
+
+    <h3>
+        MINECRAFT
+    </h3>
+
+    <p>
+        Explore endless worlds, build amazing creations,
+        gather resources and enjoy exciting adventures.
+    </p>
+
+    <p class="app-version">
+        Version 1.21.60.28 • 722.68 MB
+    </p>
+
+</div>
+
+        </article>
+
+
+        <!-- GAME 2 -->
+
+        <article
+            class="app-card"
+            data-name="Sniper 3D: Gun Shooting"
+            onclick="showInfo(
+                'Sniper 3D: Gun Shooting',
+                'Wildlife Studios',
+                '7.5.5',
+                'Android 15+',
+                'Action',
+                '230 MB',
+                'Sep 5, 2026',
+                'Unlimited Coins',
+                'https://files.droidapks.com/sniper-3d-mod_v7.5.5_(29452).apk?token=1788621184.mce2tkq4mBNZz_LjT09sbXPdDwoymEmV-fpQI0s78CY'
+            )">
+
+            <div class="app-icon">
+    <img src="icon_1024px.png" alt="Sniper 3D: Gun Shooting">
+</div>
+
+            <div class="app-info">
+
+                <h3>
+                    Sniper 3D: Gun Shooting
+                </h3>
+
+                <p>
+                    Sniper 3D: Gun Shooting is an action-packed sniper game with exciting missions, challenging targets, and weapon upgrades. Test your aiming skills and complete thrilling shooting missions.
+                </p>
+
+                <p class="app-version">
+                    Version 7.5.5 • 230 MB
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+          <!-- GAME 3 -->
+
+        <article
+            class="app-card"
+            data-name="Brain Test: Tricky Puzzles"
+            onclick="showInfo(
+                'Brain Test: Tricky Puzzles',
+                'Unico Studios',
+                '2.744.0',
+                'Android 15+',
+                'Casual',
+                '109.73 MB',
+                'Sep 19, 2023',
+                'Unlimited Hints/Skips',
+                'https://files.leeapk.com/aHR0cHM6Ly93d3cubWVkaWFmaXJlLmNvbS9maWxlLzFsbnVsdjdtYzQ1MzV5eS9CcmFpbl9UZXN0X3YyLjc0NC4wXyUyNTI4Mjc1MiUyNTI5X01vZC5hcGsvZmlsZXw3ZzlIJDJwTCF6Ujkydl9tTjV4US04akt3dzM5MUF6UHFfMDI5'
+            )">
+
+            <div class="app-icon">
+    <img src="brain-test-tricky-puzzles-logo.png" alt="Brain Test: Tricky Puzzles">
+</div>
+
+            <div class="app-info">
+
+                <h3>
+                    Brain Test: Tricky Puzzles
+                </h3>
+
+                <p>
+                    Brain Test: Tricky Puzzles is a fun and challenging puzzle game filled with tricky questions, clever challenges, and unexpected solutions. Test your brain and enjoy solving unique puzzles.
+                </p>
+
+                <p class="app-version">
+                    Version 2.744 • 109.72 MB
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+            <div class="extra-games">
+
+             <!-- APP 4 -->
+
+    <article
+        class="app-card"
+        data-name="Snaake.io"
+        onclick="showInfo(
+            'Snaake.io',
+            'Kooapps Games | Fun Arcade and casual Action Games',
+            '2.2.165',
+            'Android 6.0+',
+            'Action',
+            '138 MB',
+            'September 6, 2026',
+            'Unlimited Money',
+            'https://files.droidapks.com/snakeio-fun-snake-io-games-mod_v2.2.165_(1716).apk?token=1788669862.7g1Tck4zBdEE787H2fzjgBVHz9atKZbeYxxGKqm-vgM'
+        )">
+        
+        <div class="app-icon">
+            <img src="download-snakeio-fun-snake-io-games.png" alt="Snaake.io">
+        </div>
+
+        <div class="app-info">
+
+            <h3> Snaake.io </h3>
+
+            <p>
+                Snaake.io is a fun and fast-paced arcade game where you control a growing snake, collect items, avoid obstacles, and compete for a high score.
+            </p>
+
+            <p class="app-version">
+                Version 2.2.165 • 138 MB
+            </p>
+
+        </div>
+
+    </article>
+
+</div>
+
+<!-- ================= NEWS ================= -->
+
+<section class="section" id="news">
+
+    <div class="section-title">
+
+        <h2>
+            Latest News
+        </h2>
+
+    </div>
+
+
+    <div class="news">
+
+
+        <div class="news-card">
+
+            <h3>
+                🎮 New Game Added
+            </h3>
+
+            <p>
+                A new game has been added
+                to IsmailAPK.
+            </p>
+
+        </div>
+
+
+        <div class="news-card">
+
+            <h3>
+                📱 New App Update
+            </h3>
+
+            <p>
+                New apps and updates will
+                be added regularly.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ================= APP INFORMATION POPUP ================= -->
+
+<div class="info-modal" id="infoModal">
+
+    <div class="info-box">
+
+
+        <button
+            class="info-close"
+            onclick="closeInfo()">
+
+            ×
+
+        </button>
+
+
+        <div class="info-icon" id="infoIcon">
+            📦
+        </div>
+
+
+        <h2 id="infoName">
+            App Name
+        </h2>
+
+
+        <p class="info-subtitle">
+            App / Game Information
+        </p>
+
+
+        <div class="info-row">
+
+            <strong>
+                🤖 Name
+            </strong>
+
+            <span id="infoAppName">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <strong>
+                🛠 Publisher
+            </strong>
+
+            <span id="infoPublisher">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <strong>
+                ⚡ Version
+            </strong>
+
+            <span id="infoVersion">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <strong>
+                📱 Android
+            </strong>
+
+            <span id="infoAndroid">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <strong>
+                ☷ Genre
+            </strong>
+
+            <span id="infoGenre">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <strong>
+                💾 Size
+            </strong>
+
+            <span id="infoSize">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <strong>
+                🕐 Release Date
+            </strong>
+
+            <span id="infoDate">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <strong>
+                🎮 Mod Info
+            </strong>
+
+            <span
+                id="infoMod"
+                class="info-green">
+
+                -
+
+            </span>
+
+        </div>
+
+
+        <a
+            id="infoDownload"
+            class="info-download"
+            href="#"
+            target="_blank"
+            rel="noopener">
+
+            📥 DOWNLOAD APK
+
+        </a>
+
+
+    </div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="logo">
+        Ismail<span>APK</span>
+    </div>
+
+    <p>
+        © 2026 IsmailAPK. All rights reserved.
+    </p>
+
+    <p>
+        Only distribute apps and games that
+        you own or have permission to distribute.
+    </p>
+
+</footer>
+    <script>
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+function toggleMenu(){
+
+    document
+    .getElementById("nav")
+    .classList.toggle("show");
+
+}
+
+
+/* =========================
+   APP / GAME INFORMATION
+========================= */
+
+function showInfo(
+    name,
+    publisher,
+    version,
+    android,
+    genre,
+    size,
+    date,
+    mod,
+    download
+){
+
+    document
+    .getElementById("infoName")
+    .textContent = name;
+
+
+    document
+    .getElementById("infoAppName")
+    .textContent = name;
+
+
+    document
+    .getElementById("infoPublisher")
+    .textContent = publisher;
+
+
+    document
+    .getElementById("infoVersion")
+    .textContent = version;
+
+
+    document
+    .getElementById("infoAndroid")
+    .textContent = android;
+
+
+    document
+    .getElementById("infoGenre")
+    .textContent = genre;
+
+
+    document
+    .getElementById("infoSize")
+    .textContent = size;
+
+
+    document
+    .getElementById("infoDate")
+    .textContent = date;
+
+
+    document
+    .getElementById("infoMod")
+    .textContent = mod;
+
+
+    document
+    .getElementById("infoDownload")
+    .href = download;
+
+
+    document
+    .getElementById("infoModal")
+    .classList.add("show");
+
+}
+
+
+/* =========================
+   CLOSE INFORMATION
+========================= */
+
+function closeInfo(){
+
+    document
+    .getElementById("infoModal")
+    .classList.remove("show");
+
+}
+
+
+/* =========================
+   CLICK OUTSIDE TO CLOSE
+========================= */
+
+document
+.getElementById("infoModal")
+.addEventListener(
+    "click",
+    function(event){
+
+        if(event.target === this){
+
+            closeInfo();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchItems(){
+
+    const value =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const cards =
+        document
+        .querySelectorAll(".app-card");
+
+
+    cards.forEach(card => {
+
+        const name =
+            card
+            .dataset
+            .name
+            .toLowerCase();
+
+
+        if(name.includes(value)){
+
+            card.style.display = "flex";
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* =========================
+   ESC KEY CLOSE
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            closeInfo();
+
+        }
+
+    }
+);
+
+
+function shuffleApps(){
+
+    const lists = document.querySelectorAll(".app-list");
+
+    lists.forEach(list => {
+
+        const cards = Array.from(
+            list.querySelectorAll(".app-card")
+        );
+
+        cards.sort(() => Math.random() - 0.5);
+
+        cards.forEach(card => {
+            list.appendChild(card);
+        });
+
+    });
+
+}
+
+window.addEventListener("load", shuffleApps);
+
+function showMoreApps(){
+
+    document
+    .querySelector(".extra-apps")
+    .classList.add("show");
+
+}
+
+function showMoreGames(){
+
+    document
+    .querySelector(".extra-games")
+    .classList.add("show");
+
+}
+
+</script>
 
 </body>
 </html>
