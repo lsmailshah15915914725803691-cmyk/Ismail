@@ -4,770 +4,185 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>IsmailAPK - Apps & Games</title>
-
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
 html{scroll-behavior:smooth}
-
 body{font-family:Arial,Helvetica,sans-serif;background:#f5f6f8;color:#20232a}
-
-/* ================= HEADER ================= */
-
-header{height:70px;background:#4054b2;color:white;display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:10}
-
-.logo{
-font-size:27px;
-font-weight:800
-}
-
-.logo span{
-color:#dce2ff
-}
-
-nav{
-display:flex;
-gap:28px
-}
-
-nav a{
-color:white;
-text-decoration:none;
-font-weight:bold;
-font-size:14px
-}
-
-nav a:hover{
-color:#dce2ff
-}
-
-.menu{
-display:none;
-font-size:27px;
-cursor:pointer
-}
-
-.logo img{
-width:55px;
-height:55px;
-object-fit:contain;
-display:block
-}
-
-
-/* ================= HOME SCREEN ================= */
-
-.hero{
-position:relative;
-overflow:hidden;
-background:
-radial-gradient(circle at 15% 20%,#7c3aed55,transparent 30%),
-radial-gradient(circle at 85% 80%,#2563eb55,transparent 30%),
-linear-gradient(135deg,#080b1c,#151c42 50%,#241b4f);
-color:white;
-text-align:center;
-padding:90px 20px 85px;
-min-height:510px;
-display:flex;
-align-items:center;
-justify-content:center
-}
-
-.hero:before{
-content:"";
-position:absolute;
-width:260px;
-height:260px;
-background:#6366f1;
-border-radius:50%;
-filter:blur(110px);
-opacity:.22;
-top:-100px;
-left:-80px
-}
-
-.hero:after{
-content:"";
-position:absolute;
-width:280px;
-height:280px;
-background:#a855f7;
-border-radius:50%;
-filter:blur(120px);
-opacity:.18;
-right:-100px;
-bottom:-120px
-}
-
-.hero-content{
-position:relative;
-z-index:2;
-width:100%;
-max-width:850px
-}
-
-.hero-badge{
-display:inline-flex;
-align-items:center;
-gap:8px;
-padding:9px 17px;
-border:1px solid #ffffff25;
-background:#ffffff0d;
-border-radius:50px;
-font-size:11px;
-font-weight:bold;
-letter-spacing:.8px;
-margin-bottom:22px;
-backdrop-filter:blur(12px)
-}
-
-.hero-badge .dot{
-width:8px;
-height:8px;
-background:#4ade80;
-border-radius:50%;
-box-shadow:0 0 12px #4ade80
-}
-
-.hero h1{
-font-size:55px;
-font-weight:900;
-line-height:1.1;
-letter-spacing:-2px
-}
-
-.hero h1 span{
-background:linear-gradient(90deg,#a5b4fc,#c084fc,#f0abfc);
--webkit-background-clip:text;
-background-clip:text;
-color:transparent
-}
-
-.hero p{
-margin:18px auto 0;
-max-width:650px;
-color:#c7cbe0;
-font-size:15px;
-line-height:1.7
-}
-
-
-/* ================= SEARCH ================= */
-
-.search{
-max-width:700px;
-height:58px;
-margin:30px auto 0;
-background:#ffffff12;
-border:1px solid #ffffff22;
-border-radius:16px;
-display:flex;
-align-items:center;
-padding:4px;
-overflow:hidden;
-backdrop-filter:blur(18px);
-box-shadow:0 15px 50px #0005
-}
-
-.search-icon{
-width:42px;
-font-size:19px;
-color:#b7bdd8
-}
-
-.search input{
-height:100%;
-flex:1;
-border:0;
-outline:0;
-background:transparent;
-color:white;
-padding:0 10px;
-font-size:14px
-}
-
-.search input::placeholder{
-color:#9298b3
-}
-
-.search button{
-height:48px;
-border:0;
-background:linear-gradient(135deg,#4f46e5,#7c3aed);
-color:white;
-padding:0 23px;
-border-radius:12px;
-font-weight:bold;
-font-size:12px;
-cursor:pointer;
-transition:.25s
-}
-
-.search button:hover{
-transform:translateY(-2px);
-box-shadow:0 8px 25px #6366f166
-}
-
-
-/* ================= QUICK LINKS ================= */
-
-.quick-links{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:10px;
-margin-top:22px
-}
-
-.quick-links a{
-color:#d1d5e8;
-text-decoration:none;
-font-size:12px;
-padding:9px 15px;
-border:1px solid #ffffff18;
-background:#ffffff0a;
-border-radius:50px;
-transition:.25s
-}
-
-.quick-links a:hover{
-background:#ffffff18;
-color:white;
-transform:translateY(-2px)
-}
-
-
-/* ================= MAIN ================= */
-
-.container{
-width:92%;
-max-width:1150px;
-margin:auto
-}
-
-.section{
-margin:40px 0
-}
-
-.section-title{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:18px
-}
-
-.section-title h2{
-font-size:23px
-}
-
-.app-list{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:18px
-}
-
-.app-card{
-background:white;
-border:1px solid #e4e6eb;
-border-radius:13px;
-padding:16px;
-display:flex;
-gap:15px;
-align-items:center;
-cursor:pointer;
-transition:.25s
-}
-
-.app-card:hover{
-transform:translateY(-3px);
-box-shadow:0 8px 20px #0002
-}
-
-.app-icon,
-.info-icon{
-width:75px;
-height:75px;
-flex:none;
-border-radius:17px;
-overflow:hidden;
-background:#4054b2;
-display:flex;
-align-items:center;
-justify-content:center
-}
-
-.app-icon img,
-.info-icon img{
-width:100%;
-height:100%;
-object-fit:cover
-}
-
-.app-info{
-flex:1
-}
-
-.app-info h3{
-font-size:18px;
-margin-bottom:6px
-}
-
-.app-info p{
-font-size:13px;
-color:#70757d;
-line-height:1.5
-}
-
-.app-version{
-font-size:12px!important;
-color:#92969d!important;
-margin-top:5px
-}
-
-.extra{
-display:none
-}
-
-.extra.show{
-display:flex
-}
-
-.view-more{
-border:0;
-background:#293d96;
-color:white;
-padding:10px 20px;
-font-weight:bold;
-cursor:pointer;
-border-radius:8px
-}
-
-
-/* ================= MODAL ================= */
-
-.info-modal{
-position:fixed;
-inset:0;
-background:#0008;
-display:none;
-align-items:center;
-justify-content:center;
-padding:15px;
-z-index:20
-}
-
-.info-modal.show{
-display:flex
-}
-
-.info-box{
-background:white;
-border-radius:16px;
-padding:22px;
-width:100%;
-max-width:600px;
-max-height:90vh;
-overflow:auto;
-position:relative
-}
-
-.close{
-position:absolute;
-right:12px;
-top:12px;
-border:0;
-border-radius:50%;
-width:38px;
-height:38px;
-font-size:25px;
-cursor:pointer
-}
-
-.info-icon{
-margin:5px auto 12px
-}
-
-.info-box h2{
-text-align:center
-}
-
-.sub{
-text-align:center;
-color:#777;
-font-size:13px;
-margin:5px 0 20px
-}
-
-.row{
-display:grid;
-grid-template-columns:42% 58%;
-padding:13px 5px;
-border-bottom:1px solid #eee;
-font-size:14px
-}
-
-.green{
-color:#16a34a;
-font-weight:bold
-}
-
-.download{
-display:block;
-text-align:center;
-background:#4054b2;
-color:white;
-text-decoration:none;
-padding:15px;
-border-radius:8px;
-margin-top:20px;
-font-weight:bold
-}
-
-
-/* ================= NEWS ================= */
-
-.news-box{
-background:white;
-border:1px solid #e4e6eb;
-border-radius:13px;
-padding:20px;
-color:#70757d;
-font-size:14px;
-line-height:1.6
-}
-
-
-/* ================= FOOTER ================= */
-
-footer{
-margin-top:50px;
-background:#202c68;
-color:white;
-text-align:center;
-padding:35px 20px
-}
-
-footer p{
-font-size:13px;
-margin-top:8px;
-color:#d7dcf5
-}
-
-
-/* ================= MOBILE ================= */
-
+header{height:70px;background:#4054b2;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:100}
+.logo img{width:55px;height:55px;object-fit:contain;display:block}
+nav{display:flex;gap:28px}
+nav a{color:#fff;text-decoration:none;font-weight:bold;font-size:14px}
+.menu{display:none;font-size:30px;cursor:pointer}
+.hero{min-height:680px;background:radial-gradient(circle at 20% 20%,#472080 0,transparent 35%),radial-gradient(circle at 85% 80%,#2739a5 0,transparent 35%),linear-gradient(135deg,#11162f,#171c45);color:#fff;text-align:center;padding:105px 20px 90px;position:relative;overflow:hidden}
+.hero-badge{position:relative;z-index:2;display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border:1px solid #ffffff30;border-radius:30px;background:#ffffff0d;font-size:14px;font-weight:bold;letter-spacing:1px;margin-bottom:45px}
+.hero-badge:before{content:"";width:15px;height:15px;background:#42e879;border-radius:50%;box-shadow:0 0 15px #42e879}
+.hero h1{position:relative;z-index:2;font-size:58px;line-height:1.08;margin-bottom:25px;font-weight:800}
+.hero h1 span{background:linear-gradient(90deg,#9d8cff,#d05cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{position:relative;z-index:2;font-size:19px;line-height:1.7;color:#c5c8dc;max-width:650px;margin:0 auto 35px}
+.search{position:relative;z-index:3;max-width:640px;height:64px;margin:0 auto;background:#ffffff0c;border:2px solid #ffffff25;border-radius:30px;display:flex;overflow:hidden;box-shadow:0 10px 35px #0004;backdrop-filter:blur(10px)}
+.search input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#fff;padding:0 25px;font-size:17px}
+.search input::placeholder{color:#aeb2c7}
+.search button{border:0;margin:5px;border-radius:25px;background:linear-gradient(135deg,#6045ed,#8845ed);color:#fff;padding:0 30px;font-weight:bold;font-size:15px;cursor:pointer}
+.hero-buttons{position:relative;z-index:3;display:flex;justify-content:center;gap:18px;margin-top:40px;flex-wrap:wrap}
+.hero-buttons a{color:#d4d6e5;text-decoration:none;padding:14px 25px;border:1px solid #ffffff18;background:#ffffff08;border-radius:30px;font-size:15px}
+.hero-buttons a:hover{background:#ffffff15;color:#fff;transform:translateY(-2px)}
+.container{width:92%;max-width:1150px;margin:auto}
+.section{margin:40px 0}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.section-title h2{font-size:28px}
+.view-more{border:0;background:#293d96;color:#fff;padding:12px 20px;font-weight:bold;border-radius:8px;cursor:pointer}
+.app-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.app-card{background:#fff;border:1px solid #e4e6eb;border-radius:13px;padding:16px;display:flex;gap:15px;align-items:center;cursor:pointer;transition:.2s}
+.app-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px #0002}
+.app-icon,.info-icon{width:75px;height:75px;flex:none;border-radius:17px;overflow:hidden;background:#4054b2;display:flex;align-items:center;justify-content:center}
+.app-icon img,.info-icon img{width:100%;height:100%;object-fit:cover}
+.app-info{flex:1}.app-info h3{font-size:18px;margin-bottom:6px}.app-info p{font-size:13px;color:#70757d;line-height:1.5}.app-version{font-size:12px!important;color:#92969d!important;margin-top:5px}
+.extra{display:none}.extra.show{display:flex}
+.info-modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:15px;z-index:200}
+.info-modal.show{display:flex}
+.info-box{background:#fff;border-radius:16px;padding:22px;width:100%;max-width:600px;max-height:90vh;overflow:auto;position:relative}
+.close{position:absolute;right:12px;top:12px;border:0;border-radius:50%;width:38px;height:38px;font-size:25px;cursor:pointer}
+.info-icon{margin:5px auto 12px}.info-box h2{text-align:center}.sub{text-align:center;color:#777;font-size:13px;margin:5px 0 20px}
+.row{display:grid;grid-template-columns:42% 58%;padding:13px 5px;border-bottom:1px solid #eee;font-size:14px}
+.green{color:#16a34a;font-weight:bold}
+.download{display:block;text-align:center;background:#4054b2;color:#fff;text-decoration:none;padding:15px;border-radius:8px;margin-top:20px;font-weight:bold}
+footer{margin-top:50px;background:#202c68;color:#fff;text-align:center;padding:35px 20px}
+.footer-logo{font-size:27px;font-weight:800}.footer-logo span{color:#dce2ff}
+footer p{font-size:13px;margin-top:8px;color:#d7dcf5}
 @media(max-width:700px){
-
-nav{
-display:none;
-position:absolute;
-top:65px;
-left:0;
-right:0;
-background:#3346a0;
-padding:20px;
-flex-direction:column;
-gap:20px
-}
-
-nav.show{
-display:flex
-}
-
-.menu{
-display:block
-}
-
-.hero{
-min-height:500px;
-padding:70px 15px
-}
-
-.hero h1{
-font-size:38px;
-letter-spacing:-1px
-}
-
-.hero p{
-font-size:13px
-}
-
-.search{
-height:55px
-}
-
-.search input{
-font-size:13px
-}
-
-.search button{
-height:45px;
-padding:0 15px
-}
-
-.container{
-width:94%
-}
-
-.app-icon{
-width:65px;
-height:65px
-}
-
+header{height:65px;padding:0 7%}.logo img{width:50px;height:50px}
+nav{display:none;position:absolute;top:65px;left:0;right:0;background:#3346a0;padding:20px;flex-direction:column;gap:20px;box-shadow:0 8px 20px #0003}
+nav.show{display:flex}.menu{display:block}.hero{min-height:650px;padding:85px 18px 70px}
+.hero-badge{font-size:12px;padding:10px 17px;margin-bottom:35px}.hero h1{font-size:43px}.hero p{font-size:16px}
+.search{height:58px}.search input{font-size:14px;padding:0 15px}.search button{padding:0 20px;font-size:13px}
+.hero-buttons{gap:10px}.hero-buttons a{padding:11px 18px;font-size:13px}
+.section-title h2{font-size:22px}.app-icon{width:65px;height:65px}
 }
 </style>
 </head>
-
 <body>
-
 <header>
-
-<div class="logo">
-<img src="ismailapk.png" alt="IsmailAPK Logo">
-</div>
-
-<nav id="nav">
-<a href="#home">HOME</a>
-<a href="#apps">APPS</a>
-<a href="#games">GAMES</a>
-<a href="#news">NEWS</a>
+<div class="logo"><img src="ismailapk.png" alt="IsmailAPK"></div>
+<nav id="nav"><a href="#home">HOME</a><a href="#apps">APPS</a><a href="#games">GAMES</a><a href="#news">NEWS</a>
+  <a href="https://www.youtube.com/@MOD_CRAFT_SA_INDIA-v1g" target="_blank" rel="noopener">▶ YOUTUBE</a>
+  <a href="https://www.instagram.com/ismailapk_1024/" target="_blank" rel="noopener">◎ INSTAGRAM</a>
+  <a href="https://t.me/Ismailapk" target="_blank" rel="noopener">✈ TELEGRAM</a>
 </nav>
-
-<div class="menu" onclick="nav.classList.toggle('show')">☰</div>
-
+<div class="menu" onclick="document.getElementById('nav').classList.toggle('show')">☰</div>
 </header>
 
 <section class="hero" id="home">
-
-<div class="hero-content">
-
-<div class="hero-badge">
-<span class="dot"></span>
-ISMAILAPK • APPS & GAMES
-</div>
-
-<h1>
-Discover <span>Apps & Games</span>
-</h1>
-
-<p>
-Explore the latest apps, games and updates on IsmailAPK.
-</p>
-
-<div class="search">
-
-<div class="search-icon">🔍</div>
-
-<input
-id="search"
-placeholder="Search apps or games..."
-oninput="searchItems()">
-
-<button onclick="searchItems()">
-SEARCH
-</button>
-
-</div>
-
-<div class="quick-links">
-
-<a href="#apps">📱 APPS</a>
-<a href="#games">🎮 GAMES</a>
-<a href="#news">📰 NEWS</a>
-
-</div>
-
-</div>
-
+<div class="hero-badge">ISMAILAPK • APPS & GAMES</div>
+<h1>Discover <span>Apps &<br>Games</span></h1>
+<p>Explore the latest apps, games and updates on IsmailAPK.</p>
+<div class="search"><input id="search" type="text" placeholder="🔍  Search apps or games..." oninput="searchItems()"><button onclick="searchItems()">SEARCH</button></div>
+<div class="hero-buttons"><a href="#apps">📱 APPS</a><a href="#games">🎮 GAMES</a><a href="#news">📰 NEWS</a></div>
 </section>
 
 <main class="container">
-
 <section class="section" id="apps">
-
-<div class="section-title">
-
-<h2>Recommended Apps</h2>
-
-<button
-class="view-more"
-onclick="showMore('apps')">
-
-VIEW MORE
-
-</button>
-
-</div>
-
-<div
-class="app-list"
-id="appList">
-</div>
-
+<div class="section-title"><h2>Recommended Apps</h2><button class="view-more" onclick="showMore('apps')">VIEW MORE</button></div>
+<div class="app-list" id="appList"></div>
 </section>
 
 <section class="section" id="games">
-
-<div class="section-title">
-
-<h2>Popular Games</h2>
-
-<button
-class="view-more"
-onclick="showMore('games')">
-
-VIEW MORE
-
-</button>
-
-</div>
-
-<div
-class="app-list"
-id="gameList">
-</div>
-
+<div class="section-title"><h2>Popular Games</h2><button class="view-more" onclick="showMore('games')">VIEW MORE</button></div>
+<div class="app-list" id="gameList"></div>
 </section>
 
 <section class="section" id="news">
-
-<div class="section-title">
-<h2>Latest News</h2>
-</div>
-
-<div class="news-box">
-
-<p>
-New apps and games will be added regularly.
-</p>
-
-</div>
-
+<div class="section-title"><h2>Latest News</h2></div>
+<p>New apps and games will be added regularly.</p>
 </section>
-
 </main>
 
 <div class="info-modal" id="modal">
-
 <div class="info-box">
-
 <button class="close" onclick="closeInfo()">×</button>
-
 <div class="info-icon" id="iicon"></div>
-
-<h2 id="iname"></h2>
-
-<p class="sub">
-App / Game Information
-</p>
-
-<div class="row">
-<b>🤖 Name</b>
-<span id="n"></span>
+<h2 id="iname"></h2><p class="sub">App / Game Information</p>
+<div class="row"><b>🤖 Name</b><span id="n"></span></div>
+<div class="row"><b>🛠 Publisher</b><span id="p"></span></div>
+<div class="row"><b>⚡ Version</b><span id="v"></span></div>
+<div class="row"><b>📱 Android</b><span id="a"></span></div>
+<div class="row"><b>☷ Genre</b><span id="g"></span></div>
+<div class="row"><b>💾 Size</b><span id="s"></span></div>
+<div class="row"><b>🕐 Release Date</b><span id="d"></span></div>
+<div class="row"><b>🎮 Mod Info</b><span id="m" class="green"></span></div>
+<a id="dl" class="download" target="_blank" rel="noopener">📥 DOWNLOAD APK</a>
+</div>
 </div>
 
-<div class="row">
-<b>🛠 Publisher</b>
-<span id="p"></span>
-</div>
-
-<div class="row">
-<b>⚡ Version</b>
-<span id="v"></span>
-</div>
-
-<div class="row">
-<b>📱 Android</b>
-<span id="a"></span>
-</div>
-
-<div class="row">
-<b>☷ Genre</b>
-<span id="g"></span>
-</div>
-
-<div class="row">
-<b>💾 Size</b>
-<span id="s"></span>
-</div>
-
-<div class="row">
-<b>🕐 Release Date</b>
-<span id="d"></span>
-</div>
-
-<div class="row">
-<b>🎮 Mod Info</b>
-<span id="m" class="green"></span>
-</div>
-
-<a
-id="dl"
-class="download"
-target="_blank"
-rel="noopener">
-
-📥 DOWNLOAD APK
-
-</a>
-
-</div>
-
-</div>
-
-<footer>
-
-<div class="logo">
-Ismail<span>APK</span>
-</div>
-
-<p>
-© 2026 IsmailAPK. All rights reserved.
-</p>
-
-</footer>
+<footer><div class="footer-logo">Ismail<span>APK</span></div><p>© 2026 IsmailAPK. All rights reserved.</p></footer>
 
 <script>
-
-/* ADD A NEW APP/GAME BY ADDING ONLY ONE OBJECT HERE. */
-
 const items=[
 {name:"YouTube Por Premium",type:"app",visible:false,icon:"images.jpeg",publisher:"Google LLC",version:"21.35.442",android:"Android 15+",genre:"Video Players & Editors",size:"175 MB",date:"September 5, 2026",mod:"Premium Unlocked",description:"YouTube Premium offers an ad-free viewing experience and background playback.",download:"https://go.onehost.io/UauSmoIliA6F"},
-{name:"Pix Editor",type:"app",visible:true,icon:"images.(1)jpeg",publisher:"Signature EXP",version:"1.4.44",android:"Android 15+",genre:"Photography",size:"57 MB",date:"September 5, 2026",mod:"Premium Unlocked",description:"Photography AI editor.",download:"https://cloud.leeapks.com/Pix_Editor_v1.4.44_(48)_Mod.apk?token=1788689431.le1cIBCKdUF0mB1rbIrYTpcZ4pQT8_GJsNLnLef9Crg"},
-{name:"YouCut-Video Editor",type:"app",visible:true,icon:"youcut-logo.webp",publisher:"InShot Inc.",version:"1.720.1223",android:"Android 15+",genre:"Video Players & Editors",size:"52 MB",date:"September 5, 2026",mod:"Pro Unlocked",description:"Easy-to-use video editor for creating and enhancing videos.",download:"https://cloud.leeapks.com/YouCut_-_Video_Editor_v1.720.1223_(1223)_Mod.apk?token=1788689284.bG82I1ej31eONYATLbH_luFTHILzfopG9FwXms33Gbw"},
+{name:"Pix Editor",type:"app",visible:true,icon:"images.(1)jpeg",publisher:"Signature EXP",version:"1.4.44",android:"Android 15+",genre:"Photography",size:"57 MB",date:"September 5, 2026",mod:"Premium Unlocked",description:"Photography AI editor.",download:"https://cloud.leeapks.com/Pix_Editor_v1.4.44_(48)Mod.apk?token=1788689431.le1cIBCKdUF0mB1rbIrYTpcZ4pQT8_GJsNLnLef9Crg"},
+{name:"YouCut-Video Editor",type:"app",visible:true,icon:"youcut-logo.webp",publisher:"InShot Inc.",version:"1.720.1223",android:"Android 15+",genre:"Video Players & Editors",size:"52 MB",date:"September 5, 2026",mod:"Pro Unlocked",description:"Easy-to-use video editor for creating and enhancing videos.",download:"https://cloud.leeapks.com/YouCut-Video_Editor_v1.720.1223(1223)Mod.apk?token=1788689284.bG82I1ej31eONYATLbH_luFTHILzfopG9FwXms33Gbw"},
 {name:"Duolingo",type:"app",visible:true,icon:"Duolingo-Mod-APK.webp",publisher:"Duolingo",version:"6.95.4",android:"Android 15+",genre:"Education",size:"135 MB",date:"September 2, 2026",mod:"MAX Unlocked",description:"Learn languages with fun interactive lessons.",download:"https://cdn700.onehost.io/2023/Duolingo_7.05.1_1786114614_latestmodapks.com.apk"},
 {name:"FreeReels",type:"app",visible:false,icon:"FreeReels-App-Logo.webp",publisher:"SKYWORK AI PTE.LTD",version:"2.4.60",android:"Android 6.0+",genre:"Entertainment",size:"90 MB",date:"September 5, 2026",mod:"Premium Unlocked",description:"Discover and watch entertaining short videos.",download:"https://upload.app/api/download?sha256=6b4e7b409de41764f0378385f2e4d36a7414dacb8ffc2d08823c40340bf76751&download_id=upload_5f61844e-f4f2-4da5-9dd7-49ffa8ccc559&token=a67681ad27311d052ef68096bf35a98d6a9d3142"},
 {name:"MINECRAFT",type:"game",visible:true,icon:"icon.png",publisher:"IsmailAPK",version:"1.21.60.28",android:"Android 15+",genre:"Arcade",size:"722.68 MB",date:"Jan 24, 2025",mod:"Immortality Unlocked",description:"Explore endless worlds, build amazing creations and enjoy exciting adventures.",download:"https://files.leeapk.com/aHR0cHM6Ly93d3cubWVkaWFmaXJlLmNvbS9maWxlL3BzcmsydHlwb3Npam9xZi9taW5lY3JhZnQtbW9kX3YxLjIxLjYwLjI4XyUyNTI4OTcyMTA2MDI4JTI1MjkuYXBrL2ZpbGV8N2c5SCQycEwhelI5MnZfbU41eFEtOGpLd3czOTFBelBxXzAyOQ"},
-{name:"Sniper 3D: Gun Shooting",type:"game",visible:true,icon:"icon_1024px.png",publisher:"Wildlife Studios",version:"7.5.6",android:"Android 15+",genre:"Action",size:"230 MB",date:"Sep 5, 2026",mod:"Unlimited Coins",description:"Action-packed sniper game with exciting missions and weapon upgrades.",download:"https://files.droidapks.com/sniper-3d-mod_v7.5.6_(29486).apk?token=1788689848.jtkrQv3XGghcqTc5HmmG_SRe0J2CdQx0ncnCmSaBAzc"},
+{name:"Sniper 3D: Gun Shooting",type:"game",visible:true,icon:"icon_1024px.png",publisher:"Wildlife Studios",version:"7.5.6",android:"Android 15+",genre:"Action",size:"230 MB",date:"Sep 5, 2026",mod:"Unlimited Coins",description:"Action-packed sniper game with exciting missions and weapon upgrades.",download:"https://files.droidapks.com/sniper-3d-mod_v7.5.6(29486).apk?token=1788689848.jtkrQv3XGghcqTc5HmmG_SRe0J2CdQx0ncnCmSaBAzc"},
 {name:"Brain Test: Tricky Puzzles",type:"game",visible:false,icon:"brain-test-tricky-puzzles-logo.png",publisher:"Unico Studios",version:"2.744.0",android:"Android 15+",genre:"Casual",size:"109.73 MB",date:"Sep 19, 2023",mod:"Unlimited Hints/Skips",description:"A fun puzzle game filled with tricky challenges.",download:"https://files.leeapk.com/aHR0cHM6Ly93d3cubWVkaWFmaXJlLmNvbS9maWxlLzFsbnVsdjdtYzQ1MzV5eS9CcmFpbl9UZXN0X3YyLjc0NC4wXyUyNTI4Mjc1MiUyNTI5X01vZC5hcGsvZmlsZXw3ZzlIJDJwTCF6Ujkydl9tTjV4US04akt3dzM5MUF6UHFfMDI5"},
 {name:"Snaake.io",type:"game",visible:false,icon:"download-snakeio-fun-snake-io-games.png",publisher:"Kooapps Games",version:"2.2.165",android:"Android 6.0+",genre:"Action",size:"138 MB",date:"September 6, 2026",mod:"Unlimited Money",description:"A fast-paced arcade snake game.",download:"https://files.droidapks.com/snakeio-fun-snake-io-games-mod_v2.2.165_(1716).apk?token=1788678537.lGsOlUQs4z8z40gpuXOyfxch21-HlEfVLHCC2UkcFBU"},
-{name:"Prime Video",type:"app",visible:false,icon:"Prime-Video.webp",publisher:"Amazon Mobile LLC",version:"3.0.471.447 Build 471000447",android:"Android 9.0+",genre:"Entertainment",size:"121 MB",date:"September 5, 2026",mod:"No Ads",description:"Prime Video is an entertainment app for watching movies and TV shows.",download:"https://cloud.leeapks.com/Prime_Video_v3.0.471.447_(471000447)_Mod.apk?token=1788689604.K8eBKPnu8F9Kk9ZaQHbz3b14YUNc1LX6OnKAKcYrCe0"},
-{name:"Telegram",type:"app",visible:false,icon:"telegram-mod-apk.png",publisher:"Telegram FZ-LLC",version:"12.10.1 Build 70382",android:"Android 6.0+",genre:"Communication",size:"117 MB",date:"August 25, 2026",mod:"Premium, Mod Extra",description:"Telegram is a communication app for messaging, calling, and sharing media.",download:"https://cloud.leeapks.com/Telegram_v12.10.1_(70382)_Mod.apk?token=1788690695.3Nf3zfVPMEeat7x-fsXYV-ZERuf-MegFYY9UG1nhBb8"},
-{name:"Instagram",type:"app",visible:false,icon:"instagram.webp",publisher:"Instagram",version:"445.0.0.45.83 Build 385111379",android:"Android 9.0+",genre:"Social",size:"138 MB",date:"September 3, 2026",mod:"Premium Unlocked",description:"Instagram is a social media app for sharing photos, videos, stories, and connecting with people.",download:"https://cloud.leeapks.com/Instagram_v445.0.0.45.83_(385111379)_Mod.apk?token=1788690973.G1aPIvVn8sXD472DA8x9iEXuj8jFs3hSU1IWMxK--88"},
-{name:"2 Player Games",type:"game",visible:true,icon:"2-Player-Games-Mod-APK.png",publisher:"JindoBlu",version:"6.2.5 Build 1529",android:"Android 5.1+",genre:"Arcade",size:"75.37 MB",date:"November 13, 2023",mod:"No Ads, Premium",description:"2 Player Games is a fun arcade game featuring exciting two-player mini-games.",download:"https://cloud.leeapks.com/2-player-games-mod_v6.2.5_(1529).apk?token=1788692345.O3MZvknMTCexE7-L-iNxT1H_xJM3Q2WBOz_E-hsGJkE"},
+{name:"Prime Video",type:"app",visible:false,icon:"Prime-Video.webp",publisher:"Amazon Mobile LLC",version:"3.0.471.447 Build 471000447",android:"Android 9.0+",genre:"Entertainment",size:"121 MB",date:"September 5, 2026",mod:"No Ads",description:"Prime Video is an entertainment app for watching movies and TV shows.",download:"https://cloud.leeapks.com/Prime_Video_v3.0.471.447_(471000447)Mod.apk?token=1788689604.K8eBKPnu8F9Kk9ZaQHbz3b14YUNc1LX6OnKAKcYrCe0"},
+{name:"Telegram",type:"app",visible:false,icon:"telegram-mod-apk.png",publisher:"Telegram FZ-LLC",version:"12.10.1 Build 70382",android:"Android 6.0+",genre:"Communication",size:"117 MB",date:"August 25, 2026",mod:"Premium, Mod Extra",description:"Telegram is a communication app for messaging, calling, and sharing media.",download:"https://cloud.leeapks.com/Telegram_v12.10.1(70382)Mod.apk?token=1788690695.3Nf3zfVPMEeat7x-fsXYV-ZERuf-MegFYY9UG1nhBb8"},
+{name:"Instagram",type:"app",visible:false,icon:"instagram.webp",publisher:"Instagram",version:"445.0.0.45.83 Build 385111379",android:"Android 9.0+",genre:"Social",size:"138 MB",date:"September 3, 2026",mod:"Premium Unlocked",description:"Instagram is a social media app for sharing photos, videos, stories, and connecting with people.",download:"https://cloud.leeapks.com/Instagram_v445.0.0.45.83(385111379)Mod.apk?token=1788690973.G1aPIvVn8sXD472DA8x9iEXuj8jFs3hSU1IWMxK--88"},
+{name:"2 Player Games",type:"game",visible:true,icon:"2-Player-Games-Mod-APK.png",publisher:"JindoBlu",version:"6.2.5 Build 1529",android:"Android 5.1+",genre:"Arcade",size:"75.37 MB",date:"November 13, 2023",mod:"No Ads, Premium",description:"2 Player Games is a fun arcade game featuring exciting two-player mini-games.",download:"https://cloud.leeapks.com/2-player-games-mod_v6.2.5(1529).apk?token=1788692345.O3MZvknMTCexE7-L-iNxT1H_xJM3Q2WBOz_E-hsGJkE"},
 {name:"MovieBox",type:"app",visible:false,icon:"moviebox.png",publisher:"TRANSSNET (HK) LIMITED",version:"4.0.02.0903.02 Build 50020128",android:"Android 5.0+",genre:"Entertainment",size:"77 MB",date:"September 3, 2026",mod:"Premium Unlocked",description:"MovieBox is an entertainment app for watching movies and TV shows.",download:"https://upload.app/api/download?sha256=9dc6356dc269d0ff42392533a16bc188798760820f084b8bbb557e56cbe6ef50&download_id=upload_c66b2978-6f64-4661-9c18-a27a1666fcbc&token=feb16529bd62fc3f1437bad1cfed3cb56a9ed29c"},
 {name:"PhonePe",type:"app",visible:true,icon:"images.png",publisher:"PhonePe",version:"--------",android:"Android 7.0+",genre:"Finance",size:"35.00 MB",date:"September 2026",mod:"fake phonepe",description:"PhonePe is a digital payments app for UPI payments, money transfers, bill payments, and other financial services.",download:"https://upload.app/api/download?sha256=dfcc1b642cb4eabe1c4d31606eeb9cbea9c1af8b838231579921683219f20245&download_id=upload_3a4a77a4-0d46-40c7-864e-8543afff7218&token=bd0d05136cf94105c0b22be5cfed3aee6a9ed05a"},
-{name:"Spotify",type:"app",visible:true,icon:"spotify-music-and-podcasts-150x150.png",publisher:"Spotify AB",version:"9.0.48.380",android:"Android 6.0+",genre:"Music & Audio",size:"85 MB",date:"September 7, 2026",mod:"Premium Unlocked",description:"Spotify is a music and podcast streaming app with millions of songs, playlists, and podcasts.",download:"https://cloud.leeapks.com/Spotify_v9.1.78.2215_(145505425)_Mod.apk?token=1788795169.Eb5QuB9CPAMhd2Ztja7kbr-d6JS3j3fc9mtpgk2Kt0A"},
-{name:"iLauncher",type:"app",visible:true,icon:"ilauncher.webp",publisher:"BlueSkySoft",version:"2.1.7",android:"Android 5.0+",genre:"Personalization",size:"15 MB",date:"September 7, 2026",mod:"Premium",description:"iLauncher is a customizable launcher that gives your Android device an iOS-style home screen experience.",download:"https://cloud.leeapks.com/iLauncher_v2.1.7_(86)_Mod.apk?token=1788793784.yLVKP9X3r-4kHsKqtvP78p3Yr_iB9Ff4pJkjIrOEDK0"},
-{name:"TeraBox",type:"app",visible:true,icon:"terabox.webp",publisher:"Flextech Inc.",version:"4.24.6",android:"Android 5.0+",genre:"Cloud Storage",size:"95 MB",date:"September 7, 2026",mod:"Premium",description:"TeraBox is a cloud storage app for securely storing, managing, syncing, and sharing files online.",download:"https://www.mediafire.com/file/onp80d8ytounlt0/TeraBox_v4.24.6_-_Premium.apk/file?dkey=y4n624i1z7a&r=1633"},
-{name:"GetContact",type:"app",visible:true,icon:"getcontact.webp",publisher:"Getverify LDA",version:"8.16.0",android:"Android 6.0+",genre:"Communication",size:"45 MB",date:"September 7, 2026",mod:"Premium",description:"GetContact helps identify unknown callers, block unwanted calls, and manage your contacts.",download:"https://www.mediafire.com/file/ub91s97f1hxzmgc/GetContact_v8.16.0_-_Premium.apk/file?dkey=j59yebctw4y&r=1556"},
+{name:"Spotify",type:"app",visible:true,icon:"spotify-music-and-podcasts-150x150.png",publisher:"Spotify AB",version:"9.0.48.380",android:"Android 6.0+",genre:"Music & Audio",size:"85 MB",date:"September 7, 2026",mod:"Premium Unlocked",description:"Spotify is a music and podcast streaming app with millions of songs, playlists, and podcasts.",download:"https://cloud.leeapks.com/Spotify_v9.1.78.2215_(145505425)Mod.apk?token=1788795169.Eb5QuB9CPAMhd2Ztja7kbr-d6JS3j3fc9mtpgk2Kt0A"},
+{name:"iLauncher",type:"app",visible:true,icon:"ilauncher.webp",publisher:"BlueSkySoft",version:"2.1.7",android:"Android 5.0+",genre:"Personalization",size:"15 MB",date:"September 7, 2026",mod:"Premium",description:"iLauncher is a customizable launcher that gives your Android device an iOS-style home screen experience.",download:"https://cloud.leeapks.com/iLauncher_v2.1.7(86)Mod.apk?token=1788793784.yLVKP9X3r-4kHsKqtvP78p3Yr_iB9Ff4pJkjIrOEDK0"},
+{name:"TeraBox",type:"app",visible:true,icon:"terabox.webp",publisher:"Flextech Inc.",version:"4.24.6",android:"Android 5.0+",genre:"Cloud Storage",size:"95 MB",date:"September 7, 2026",mod:"Premium",description:"TeraBox is a cloud storage app for securely storing, managing, syncing, and sharing files online.",download:"https://www.mediafire.com/file/onp80d8ytounlt0/TeraBox_v4.24.6-Premium.apk/file?dkey=y4n624i1z7a&r=1633"},
+{name:"GetContact",type:"app",visible:true,icon:"getcontact.webp",publisher:"Getverify LDA",version:"8.16.0",android:"Android 6.0+",genre:"Communication",size:"45 MB",date:"September 7, 2026",mod:"Premium",description:"GetContact helps identify unknown callers, block unwanted calls, and manage your contacts.",download:"https://www.mediafire.com/file/ub91s97f1hxzmgc/GetContact_v8.16.0-Premium.apk/file?dkey=j59yebctw4y&r=1556"},
 {name:"YouTube Vanced",type:"app",visible:true,icon:"youtube-vanced.webp",publisher:"Vanced Team",version:"21.32.5",android:"Android 8.0+",genre:"Video Players & Editors",size:"100 MB",date:"September 7, 2026",mod:"Premium",description:"YouTube Vanced is a modified YouTube client with additional playback and customization features.",download:"https://www.mediafire.com/file/yfw8pkstl7zxevr/VANCED%20TUBE%20NO%20IKLAN%20VIP%20PREMIUM%20VERSI%205.6.80.397%20Modder%20By%20@Limuchen28%7B%7D.apk/file?dkey=snj6zsefp0i&r=454"},
 {name:"PixelLab",type:"app",visible:true,icon:"pixellab.webp",publisher:"App Holdings",version:"2.1.9",android:"Android 5.0+",genre:"Photography",size:"28 MB",date:"September 7, 2026",mod:"Full Unlocked",description:"PixelLab is a creative text and photo editing app for designing images, adding stylish text, and creating graphics.",download:"https://www.mediafire.com/file/jddwmgza5rv94ad/Pixellab_Mod_Full_Unlock.apk/file?dkey=gen2g7850mv&r=734"},
-{name:"GB WhatsApp Pro",type:"app",visible:true,icon:"gb-whatsapp.webp",publisher:"Third-Party Developer",version:"Unverified",android:"Android 5.0+",genre:"Communication",size:"102 MB",date:"September 7, 2026",mod:"Pro Features",description:"GB WhatsApp Pro is an unofficial modified WhatsApp client with additional customization and privacy features.",download:"https://www.mediafire.com/file/ub91s97f1hxzmgc/GetContact_v8.16.0_-_Premium.apk/file?dkey=j59yebctw4y&r=1556"}
+{name:"GB WhatsApp Pro",type:"app",visible:true,icon:"gb-whatsapp.webp",publisher:"Third-Party Developer",version:"Unverified",android:"Android 5.0+",genre:"Communication",size:"102 MB",date:"September 7, 2026",mod:"Pro Features",description:"GB WhatsApp Pro is an unofficial modified WhatsApp client with additional customization and privacy features.",download:"https://www.mediafire.com/file/ub91s97f1hxzmgc/GetContact_v8.16.0-_Premium.apk/file?dkey=j59yebctw4y&r=1556"},
+{name:"JioHotstar",type:"app",visible:false,icon:"jiohotstar.webp",publisher:"JioStar India Private Limited",version:"26.08.01",android:"Android 7.0+",genre:"Entertainment",size:"85 MB",date:"September 8, 2026",mod:"Premium",description:"JioHotstar is a streaming app for movies, TV shows, sports, live entertainment, and original content.",download:"https://upload.app/api/download?sha256=de8a1302cbcb8b7fc9672e80e73c65d90abb2274c9024c34b22f48502cbbd0b4&download_id=upload_9a2c0ea8-1b5f-44a6-8657-fd4bf4338bb1&token=79bc45096be14e7d0b3e217454640c026aa01f9c"}
 ];
- 
 
 function card(x){
- const e=document.createElement("article"); e.className="app-card"+(x.visible?"":" extra"); e.dataset.name=x.name.toLowerCase();
- e.innerHTML='<div class="app-icon"><img src="'+x.icon+'" alt="'+x.name+'"></div><div class="app-info"><h3>'+x.name+'</h3><p>'+x.description+'</p><p class="app-version">Version '+x.version+' • '+x.size+'</p></div>';
- e.onclick=()=>showInfo(x); return e;
+const e=document.createElement("article");
+e.className="app-card"+(x.visible?"":" extra");
+e.dataset.name=x.name.toLowerCase();
+e.innerHTML=`<div class="app-icon"><img src="${x.icon}" alt="${x.name}"></div><div class="app-info"><h3>${x.name}</h3><p>${x.description}</p><p class="app-version">Version ${x.version} • ${x.size}</p></div>`;
+e.onclick=()=>showInfo(x);
+return e;
 }
-function render(){items.forEach(x=>(x.type==="app"?appList:gameList).appendChild(card(x)))}
-function showMore(type){const box=document.getElementById(type==="apps"?"appList":"gameList");box.querySelectorAll(".extra").forEach(x=>x.classList.add("show"));document.querySelector("#"+type+" .view-more").style.display="none"}
-function searchItems(){let q=search.value.toLowerCase().trim();document.querySelectorAll(".app-card").forEach(c=>{let ok=c.dataset.name.includes(q);c.style.display=ok?"flex":"none"})}
-function showInfo(x){modal.classList.add("show");iicon.innerHTML='<img src="'+x.icon+'" alt="">';iname.textContent=x.name;n.textContent=x.name;p.textContent=x.publisher;v.textContent=x.version;a.textContent=x.android;g.textContent=x.genre;s.textContent=x.size;d.textContent=x.date;m.textContent=x.mod;dl.href=x.download}
-function closeInfo(){modal.classList.remove("show")}
-modal.onclick=e=>{if(e.target===modal)closeInfo()};document.addEventListener("keydown",e=>{if(e.key==="Escape")closeInfo()});render();
+function render(){
+const appList=document.getElementById("appList");
+const gameList=document.getElementById("gameList");
+items.forEach(x=>(x.type==="app"?appList:gameList).appendChild(card(x)));
+}
+function showMore(type){
+const box=document.getElementById(type==="apps"?"appList":"gameList");
+box.querySelectorAll(".extra").forEach(x=>x.classList.add("show"));
+const button=document.querySelector("#"+type+" .view-more");
+if(button)button.style.display="none";
+}
+function searchItems(){
+const q=document.getElementById("search").value.toLowerCase().trim();
+document.querySelectorAll(".app-card").forEach(c=>c.style.display=c.dataset.name.includes(q)?"flex":"none");
+}
+function showInfo(x){
+document.getElementById("modal").classList.add("show");
+document.getElementById("iicon").innerHTML=`<img src="${x.icon}" alt="">`;
+document.getElementById("iname").textContent=x.name;
+document.getElementById("n").textContent=x.name;
+document.getElementById("p").textContent=x.publisher;
+document.getElementById("v").textContent=x.version;
+document.getElementById("a").textContent=x.android;
+document.getElementById("g").textContent=x.genre;
+document.getElementById("s").textContent=x.size;
+document.getElementById("d").textContent=x.date;
+document.getElementById("m").textContent=x.mod;
+document.getElementById("dl").href=x.download;
+}
+function closeInfo(){document.getElementById("modal").classList.remove("show")}
+document.getElementById("modal").onclick=e=>{if(e.target===e.currentTarget)closeInfo()};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeInfo()});
+render();
 </script>
 </body>
 </html>
