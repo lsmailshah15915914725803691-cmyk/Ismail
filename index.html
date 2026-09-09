@@ -58,20 +58,53 @@ nav.show{display:flex}.menu{display:block}.hero{min-height:650px;padding:85px 18
 .hero-buttons{gap:10px}.hero-buttons a{padding:11px 18px;font-size:13px}
 .section-title h2{font-size:22px}.app-icon{width:65px;height:65px}
 }
-</style>
+
+/* ===== Transparent Social Download Popup ===== */
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.70);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
+.popup-overlay.show{display:flex}
+.popup-box{width:100%;max-width:430px;background:#fff;border-radius:22px;padding:28px 22px 22px;text-align:center;box-shadow:0 20px 70px rgba(0,0,0,.35);animation:popupIn .25s ease;position:relative}
+@keyframes popupIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+.popup-close{position:absolute;right:12px;top:12px;width:35px;height:35px;border:0;border-radius:50%;background:#f1f2f5;font-size:22px;cursor:pointer}
+.popup-icon{font-size:45px;margin-bottom:8px}
+.popup-box h2{font-size:25px;margin-bottom:8px;color:#20232a}
+.popup-box p{font-size:14px;line-height:1.6;color:#70757d;margin-bottom:18px}
+.social-link{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;margin:10px 0;border-radius:12px;text-decoration:none;color:#fff;font-weight:bold;font-size:15px}
+.youtube{background:#ff0000}.instagram{background:#e1306c}.telegram{background:#229ed9}
+.popup-download{display:block;width:100%;padding:15px;margin-top:18px;border-radius:12px;background:#4054b2;color:#fff;text-decoration:none;font-weight:bold;font-size:16px}
+.skip-btn{margin-top:14px;border:0;background:transparent;color:#70757d;font-size:14px;cursor:pointer;padding:8px}
+.popup-note{font-size:11px!important;color:#999!important;margin-top:12px!important;margin-bottom:0!important}
+.brand{display:flex;align-items:center;gap:15px;}
+.brand-logo{width:60px;height:60px;object-fit:cover;border-radius:6px;}
+.brand-name{color:white;font-size:24px;font-weight:800;letter-spacing:1px;}
+@media(max-width:700px){
+.brand-logo{width:55px;height:55px;}
+.brand-name{font-size:20px;}
+}
+    
+ </style>
 </head>
 <body>
 <header>
-<div class="logo"><img src="ismailapk.png" alt="IsmailAPK"></div>
-<nav id="nav"><a href="#home">HOME</a><a href="#apps">APPS</a><a href="#games">GAMES</a><a href="#news">NEWS</a>
-  <a href="https://www.youtube.com/@MOD_CRAFT_SA_INDIA-v1g" target="_blank" rel="noopener">▶ YOUTUBE</a>
-  <a href="https://www.instagram.com/ismailapk_1024/" target="_blank" rel="noopener">◎ INSTAGRAM</a>
-  <a href="https://t.me/Ismailapk" target="_blank" rel="noopener">✈ TELEGRAM</a>
-</nav>
-<div class="menu" onclick="document.getElementById('nav').classList.toggle('show')">☰</div>
+
+    <div class="brand">
+        <img src="ismailapk.png" alt="IsmailAPK Logo" class="brand-logo">
+        <span class="brand-name">ISMAILAPK</span>
+    </div>
+
+    <nav id="nav">
+        <a href="#home">HOME</a>
+        <a href="#apps">APPS</a>
+        <a href="#games">GAMES</a>
+        <a href="#news">NEWS</a>
+    </nav>
+
+    <div class="menu" onclick="toggleMenu()">
+        ☰
+    </div>
+
 </header>
 
-<section class="hero" id="home">
+ <section class="hero" id="home">
 <div class="hero-badge">ISMAILAPK • APPS & GAMES</div>
 <h1>Discover <span>Apps &<br>Games</span></h1>
 <p>Explore the latest apps, games and updates on IsmailAPK.</p>
@@ -109,7 +142,7 @@ nav.show{display:flex}.menu{display:block}.hero{min-height:650px;padding:85px 18
 <div class="row"><b>💾 Size</b><span id="s"></span></div>
 <div class="row"><b>🕐 Release Date</b><span id="d"></span></div>
 <div class="row"><b>🎮 Mod Info</b><span id="m" class="green"></span></div>
-<a id="dl" class="download" target="_blank" rel="noopener">📥 DOWNLOAD APK</a>
+<a id="dl" onclick="openDownloadPopup(event)" class="download" target="_blank" rel="noopener">📥 DOWNLOAD APK</a>
 </div>
 </div>
 
@@ -177,12 +210,53 @@ document.getElementById("g").textContent=x.genre;
 document.getElementById("s").textContent=x.size;
 document.getElementById("d").textContent=x.date;
 document.getElementById("m").textContent=x.mod;
-document.getElementById("dl").href=x.download;
+document.getElementById("dl").dataset.download=x.download;
+  document.getElementById("popupDownload").href=x.download;
 }
 function closeInfo(){document.getElementById("modal").classList.remove("show")}
 document.getElementById("modal").onclick=e=>{if(e.target===e.currentTarget)closeInfo()};
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeInfo()});
 render();
+
+const socialState={youtube:false,instagram:false,telegram:false};
+function markSocial(name){ socialState[name]=true; const el=document.getElementById("social"+name.charAt(0).toUpperCase()+name.slice(1)); if(el) el.classList.add("done"); updateGate(); }
+function updateGate(){ const count=Object.values(socialState).filter(Boolean).length; document.getElementById("gateStatus").textContent=count+"/3 pages opened"; const b=document.getElementById("popupDownload"); if(count===3){b.style.opacity="1";b.style.pointerEvents="auto";} else {b.style.opacity=".45";b.style.pointerEvents="none";} }
+function openDownloadPopup(event){
+  if(event) event.preventDefault();
+  const link=document.getElementById("dl").dataset.download;
+  if(link) document.getElementById("popupDownload").href=link;
+  updateGate();
+  document.getElementById("downloadPopup").classList.add("show");
+}
+function closeDownloadPopup(){
+  document.getElementById("downloadPopup").classList.remove("show");
+}
+document.getElementById("downloadPopup").addEventListener("click",function(e){
+  if(e.target===this) closeDownloadPopup();
+});
+
 </script>
+
+<!-- Transparent Social Download Popup -->
+<div class="popup-overlay" id="downloadPopup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closeDownloadPopup()">×</button>
+    <div class="popup-icon">🚀</div>
+    <h2>Download Ready!</h2>
+    <p>Open all three social pages below to unlock the download button.</p>
+
+    <a class="social-link youtube" id="socialYoutube" href="https://www.youtube.com/@MOD_CRAFT_SA_INDIA-v1g" target="_blank" rel="noopener" onclick="markSocial('youtube')">▶ YouTube — Open</a>
+
+    <a class="social-link instagram" id="socialInstagram" href="https://www.instagram.com/ismailapk_1024/" target="_blank" rel="noopener" onclick="markSocial('instagram')">◎ Instagram — Open</a>
+
+    <a class="social-link telegram" id="socialTelegram" href="https://t.me/Ismailapk" target="_blank" rel="noopener" onclick="markSocial('telegram')">✈ Telegram — Open</a>
+
+    <p id="gateStatus" class="popup-note">0/3 pages opened</p><a id="popupDownload" class="popup-download" href="#" target="_blank" rel="noopener" style="opacity:.45;pointer-events:none">⬇️ DOWNLOAD APK</a>
+
+    <button class="skip-btn" onclick="closeDownloadPopup()">✕ Close / Skip</button>
+    <p class="popup-note">The site can verify that the links were opened, not that you actually subscribed or joined.</p>
+  </div>
+</div>
+
 </body>
 </html>
